@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="580" viewBox="0 0 1200 580" role="img" aria-labelledby="title description">
+  <title id="title">SPU-lite processor architecture</title>
+  <desc id="description">Fetch feeds decode and register read with forwarding. Parallel even and odd execution pipes feed register writeback. Both pipes forward results to register read. The odd pipe accesses local store and resolves branches. A branch target buffer and prediction counters guide fetch.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#475569"/></marker>
+    <marker id="feedback" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#6d28d9"/></marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #172033; }
+      .node { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; }
+      .memory { fill: #f0fdf4; stroke: #15803d; stroke-width: 2; }
+      .control { fill: #faf5ff; stroke: #7e22ce; stroke-width: 2; }
+      .label { font-size: 19px; text-anchor: middle; }
+      .small { font-size: 15px; text-anchor: middle; fill: #475569; }
+      .data { fill: none; stroke: #475569; stroke-width: 2; marker-end: url(#arrow); }
+      .back { fill: none; stroke: #6d28d9; stroke-width: 2; stroke-dasharray: 6 5; marker-end: url(#feedback); }
+    </style>
+  </defs>
+  <rect width="1200" height="580" rx="12" fill="#ffffff"/>
+  <text x="30" y="35" font-size="23" font-weight="bold">SPU-lite · dual-pipe SIMD processor</text>
+
+  <!-- Main data paths. -->
+  <path class="data" d="M155 275 H205"/>
+  <path class="data" d="M360 275 H410"/>
+  <path class="data" d="M600 260 H630 V170 H670"/>
+  <path class="data" d="M600 290 H645 V390 H670"/>
+  <path class="data" d="M900 170 H950 V260 H1000"/>
+  <path class="data" d="M900 370 H965 V290 H1000"/>
+  <path class="data" d="M95 160 V240"/>
+  <path class="data" marker-start="url(#arrow)" d="M900 410 H935 V485 H980"/>
+
+  <!-- Result forwarding and branch recovery. -->
+  <path class="back" d="M785 130 V95 H505 V240"/>
+  <text class="small" x="640" y="82">Forward results</text>
+  <path class="back" d="M670 410 H620 V335 H535 V310"/>
+  <text class="small" x="480" y="354">Forward results</text>
+  <path class="back" d="M785 430 V535 H95 V310"/>
+  <text class="small" x="425" y="560">Branch resolution and fetch redirection</text>
+
+  <rect class="control" x="35" y="75" width="215" height="85" rx="10"/>
+  <text class="label" x="142" y="108">Branch prediction</text>
+  <text class="small" x="142" y="137">16-entry BTB + counters</text>
+
+  <rect class="node" x="35" y="240" width="120" height="70" rx="10"/>
+  <text class="label" x="95" y="282">Fetch</text>
+  <rect class="node" x="205" y="240" width="155" height="70" rx="10"/>
+  <text class="label" x="282" y="269">Decode</text>
+  <text class="small" x="282" y="293">and dispatch</text>
+  <rect class="node" x="410" y="240" width="190" height="70" rx="10"/>
+  <text class="label" x="505" y="269">Register read</text>
+  <text class="small" x="505" y="293">and forwarding</text>
+
+  <rect class="node" x="670" y="130" width="230" height="80" rx="10"/>
+  <text class="label" x="785" y="163">Even execution pipe</text>
+  <text class="small" x="785" y="191">Fixed point · FP · multiply · byte</text>
+  <rect class="node" x="670" y="350" width="230" height="80" rx="10"/>
+  <text class="label" x="785" y="383">Odd execution pipe</text>
+  <text class="small" x="785" y="411">Permute · load/store · branch</text>
+
+  <rect class="node" x="1000" y="240" width="170" height="70" rx="10"/>
+  <text class="label" x="1085" y="269">Register</text>
+  <text class="label" x="1085" y="293">writeback</text>
+  <rect class="memory" x="980" y="450" width="190" height="70" rx="10"/>
+  <text class="label" x="1075" y="479">Local store</text>
+  <text class="small" x="1075" y="503">32 KiB · 128-bit words</text>
+</svg>

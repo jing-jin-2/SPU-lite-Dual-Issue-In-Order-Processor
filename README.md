@@ -18,20 +18,7 @@ Developed as an ESE 545 course project.
 | Instruction memory | 512 × 32-bit words (2 KiB) |
 | Local store | 2,048 × 128-bit quadwords (32 KiB) |
 
-```mermaid
-flowchart LR
-    F[Fetch] --> D[Decode and dispatch]
-    D --> R[Register read and forwarding]
-    R --> E[Even execution pipe]
-    R --> O[Odd execution pipe]
-    E --> W[Register writeback]
-    O --> W
-    E -. Forward results .-> R
-    O -. Forward results .-> R
-    O <--> LS[Local store]
-    O -. Branch resolution .-> F
-    P[BTB and prediction counters] --> F
-```
+![SPU-lite architecture: fetch, decode, register read and forwarding, parallel even and odd execution pipes, register writeback, local store, and branch prediction.](docs/architecture.svg)
 
 This is a functional simulation project. Floating-point execution uses behavioral
 SystemVerilog `shortreal`; FPGA deployment, synthesis, timing closure, complete
