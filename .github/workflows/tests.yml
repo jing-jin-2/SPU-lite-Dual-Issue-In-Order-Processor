@@ -1,0 +1,13 @@
+name: Assembler tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  assembler:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check runner syntax
+        run: bash -n build.sh scripts/run_tests.sh
+      - name: Run assembler regressions
+        run: ./build.sh assembler

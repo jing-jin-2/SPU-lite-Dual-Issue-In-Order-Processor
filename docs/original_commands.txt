@@ -1,0 +1,6 @@
+# Historical course-project commands, preserved for reference only.
+# Paths and test names below are obsolete; use ../build.sh from the repository root.
+
+python3 asm.py test.s -o test.hex
+vlog -64 +acc spu_pkg.sv spu_core.sv regfile.sv  spu_tb.sv
+vsim -64 spu_tb +PROG=test_basic.hex &

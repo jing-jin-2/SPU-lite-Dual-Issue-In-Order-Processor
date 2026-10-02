@@ -1,0 +1,12 @@
+/build/
+/work/
+/modelsim.ini
+/transcript
+*.wlf
+wlft*
+*.vcd
+*.vstf
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
