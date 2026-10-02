@@ -64,6 +64,7 @@ testbench. Cycle 440 is the reported STOP cycle; the testbench then allows anoth
 20 clocks for pipeline draining. Do not interpret it as a frequency or throughput
 measurement. The demo checks outcomes, not exact stall counts or predictor accuracy.
 
+- [Instruction-set table (PDF)](docs/instruction-set.pdf) — instruction mnemonics, operation descriptions, execution pipes, and listed latencies; supplied project reference, not a verified coverage report.
 - [Verification plan and limitations](docs/verification.md)
 - [Original matrix simulation output](docs/results/matmul-original.txt)
 - [Original project report (PDF)](docs/part1_report_jing_jin.pdf)
